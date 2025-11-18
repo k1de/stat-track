@@ -1,6 +1,6 @@
 {
     "name": "stat-track",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Lightweight statistics tracking with operation timing and error categorization",
     "type": "module",
     "main": "./dist/statistics.js",
