@@ -46,7 +46,7 @@ export default class Statistics {
     /** Record a successful operation with optional timing (ms) and code */
     addSuccess(operationTime?: number, code?: string | number) {
         this.successCount++
-        const key = String(code ?? 'SUCCESS')
+        const key = String(code ?? 'UNKNOWN')
         this.successes.set(key, (this.successes.get(key) || 0) + 1)
 
         if (typeof operationTime === 'number' && operationTime >= 0) {
@@ -62,7 +62,7 @@ export default class Statistics {
     /** Record an error with optional timing (ms) and error code */
     addError(operationTime?: number, code?: string | number) {
         this.errorCount++
-        const key = String(code ?? 'ERROR')
+        const key = String(code ?? 'UNKNOWN')
         this.errors.set(key, (this.errors.get(key) || 0) + 1)
 
         if (typeof operationTime === 'number' && operationTime >= 0) {
@@ -248,7 +248,7 @@ export default class Statistics {
 
         // Show success codes if there are multiple types
         const successEntries = Object.entries(stats.successes)
-        if (successEntries.length > 1 || (successEntries.length === 1 && successEntries[0]?.[0] !== 'SUCCESS')) {
+        if (successEntries.length > 1 || (successEntries.length === 1 && successEntries[0]?.[0] !== 'UNKNOWN')) {
             const sortedSuccesses = successEntries.sort(([, a], [, b]) => b - a)
             for (const [code, count] of sortedSuccesses) {
                 report += "        ✓ " + chalk.green(`${code}: ${count}\n`)
@@ -275,7 +275,7 @@ export default class Statistics {
 
             // Show error codes if there are multiple types
             const errorEntries = Object.entries(stats.errors)
-            if (errorEntries.length > 1 || (errorEntries.length === 1 && errorEntries[0]?.[0] !== 'ERROR')) {
+            if (errorEntries.length > 1 || (errorEntries.length === 1 && errorEntries[0]?.[0] !== 'UNKNOWN')) {
                 const sortedErrors = errorEntries.sort(([, a], [, b]) => b - a)
                 for (const [errorCode, count] of sortedErrors) {
                     report += "        × " + chalk.red(`${errorCode}: ${count}\n`)
