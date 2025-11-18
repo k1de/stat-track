@@ -158,6 +158,16 @@ export default class Statistics {
         return this.successCount + this.errorCount
     }
 
+    /** Get count of successful operations */
+    getSuccessCount(): number {
+        return this.successCount
+    }
+
+    /** Get count of error operations */
+    getErrorCount(): number {
+        return this.errorCount
+    }
+
     /** Get success rate as percentage (0-100) */
     getSuccessRate(): number {
         const totalCount = this.getTotalCount()

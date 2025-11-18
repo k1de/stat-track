@@ -77,6 +77,8 @@ const stats = new Statistics({
 
 -   `getSuccessRate()` - success percentage
 -   `getTotalCount()` - total operations count
+-   `getSuccessCount()` - successful operations count
+-   `getErrorCount()` - error operations count
 -   `getTimeMs()` - elapsed time since start
 
 **Reporting:**
