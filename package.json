@@ -1,0 +1,37 @@
+{
+    "name": "stat-track",
+    "version": "1.0.0",
+    "description": "Lightweight statistics tracking with operation timing and error categorization",
+    "type": "module",
+    "main": "./dist/statistics.js",
+    "types": "./dist/statistics.d.ts",
+    "scripts": {
+        "dev": "npx tsc --watch",
+        "build": "npx tsc --build",
+        "test": "npm run build && node test/test.js",
+        "prepublishOnly": "npm run clean && npm test",
+        "clean": "node -e \"import('fs').then(fs => { fs.rmSync('dist', {recursive: true, force: true}); fs.rmSync('tsconfig.tsbuildinfo', {force: true}); })\"",
+        "degit": "node -e \"import('fs').then(fs => fs.rmSync('.git', {recursive: true, force: true}))\""
+    },
+    "keywords": [
+        "statistics",
+        "metrics",
+        "monitoring",
+        "timing",
+        "performance",
+        "analytics",
+        "tracking",
+        "error-tracking",
+        "typescript",
+        "esm"
+    ],
+    "author": "tish",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^24.10.1",
+        "typescript": "^5.9.3"
+    },
+    "dependencies": {
+        "chalk": "^5.6.2"
+    }
+}

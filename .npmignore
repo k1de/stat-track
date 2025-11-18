@@ -1,0 +1,4 @@
+# Publish only dist
+# Note: package.json, README*, LICENSE*, CHANGELOG* are always included automatically
+*
+!dist/**
