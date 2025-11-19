@@ -22,13 +22,13 @@ const stats = new Statistics('API Monitor');
 stats.addSuccess(); // without timing or code
 stats.addSuccess(125); // with timing: 125ms
 stats.addSuccess(125, '201'); // with timing and code (e.g., HTTP 201 Created)
-stats.addSuccess(undefined, '200'); // without timing, with code
+stats.addSuccessCode('200'); // with code only (no timing)
 
 // Track errors
 stats.addError(); // without timing or code
 stats.addError(5000); // with timing: 5000ms
 stats.addError(5000, 'TIMEOUT'); // with timing and code
-stats.addError(undefined, 'TIMEOUT'); // without timing, with code
+stats.addErrorCode('TIMEOUT'); // with code only (no timing)
 
 // Get formatted report
 console.log(stats.getReportText());
@@ -54,7 +54,9 @@ const stats = new Statistics({
 **Tracking:**
 
 -   `addSuccess(operationTime?, code?)` - record successful operation with optional timing (ms) and code
+-   `addSuccessCode(code)` - record successful operation with code only (no timing)
 -   `addError(operationTime?, code?)` - record error with optional timing (ms) and error code
+-   `addErrorCode(code)` - record error with code only (no timing)
 -   `reset()` - reset all statistics
 
 **Analysis (successful operations):**

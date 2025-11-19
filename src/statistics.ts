@@ -59,6 +59,11 @@ export default class Statistics {
         }
     }
 
+    /** Record a successful operation with code only (no timing) */
+    addSuccessCode(code: string | number) {
+        this.addSuccess(undefined, code)
+    }
+
     /** Record an error with optional timing (ms) and error code */
     addError(operationTime?: number, code?: string | number) {
         this.errorCount++
@@ -73,6 +78,11 @@ export default class Statistics {
                 this.errorTimes.shift()
             }
         }
+    }
+
+    /** Record an error with code only (no timing) */
+    addErrorCode(code: string | number) {
+        this.addError(undefined, code)
     }
 
     /** Get average time for successful operations */
