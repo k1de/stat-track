@@ -218,8 +218,8 @@ export default class Statistics {
 
     /** Get structured statistics report with all metrics */
     getReport() {
-        const totalCount = this.getTotalCount()
         const timeMs = this.getTimeMs()
+        const totalCount = this.getTotalCount()
         const successRate = this.getSuccessRate()
 
         return {
@@ -233,8 +233,6 @@ export default class Statistics {
             successMedian: this.getSuccessMedian(),
             successRange: this.getSuccessRange(),
             successP75: this.getSuccessPercentile(75),
-            successes: Object.fromEntries(this.successes),
-            errors: Object.fromEntries(this.errors),
             successTimes: this.operationTimes as readonly number[],
             successSampleCount: this.operationTimes.length,
             errorAvg: this.getErrorAvg(),
@@ -243,7 +241,9 @@ export default class Statistics {
             errorP75: this.getErrorPercentile(75),
             errorTimes: this.errorTimes as readonly number[],
             errorSampleCount: this.errorTimes.length,
-            maxSamples: this.maxOperationTimeSamples
+            maxSamples: this.maxOperationTimeSamples,
+            successes: Object.fromEntries(this.successes),
+            errors: Object.fromEntries(this.errors),
         }
     }
 
